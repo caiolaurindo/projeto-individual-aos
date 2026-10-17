@@ -7,12 +7,76 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Curriculo {
-  id          Int      @id @default(autoincrement())
+model Pessoa {
+  id           Int           @id @default(autoincrement())
+  nome         String
+  email        String        @unique
+  telefone     String?
+  resumo       String?
+  linkedin     String?
+  github       String?
+  formacoes    Formacao[]
+  experiencias Experiencia[]
+  projetos     Projeto[]
+  habilidades  Habilidade[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Formacao {
+  id          Int       @id @default(autoincrement())
+  instituicao String
+  curso       String
+  nivel       String?
+  dataInicio  DateTime
+  dataFim     DateTime?
+  emAndamento Boolean   @default(false)
+  descricao   String?
+  pessoaId    Int
+  pessoa      Pessoa    @relation(fields: [pessoaId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Experiencia {
+  id          Int       @id @default(autoincrement())
+  empresa     String
+  cargo       String
+  tipo        String?
+  local       String?
+  dataInicio  DateTime
+  dataFim     DateTime?
+  emAndamento Boolean   @default(false)
+  descricao   String?
+  pessoaId    Int
+  pessoa      Pessoa    @relation(fields: [pessoaId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Projeto {
+  id          Int       @id @default(autoincrement())
   nome        String
-  email       String   @unique
-  telefone    String?
-  resumo      String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  descricao   String?
+  url         String?
+  repositorio String?
+  tecnologias String[]  @default([])
+  dataInicio  DateTime?
+  dataFim     DateTime?
+  pessoaId    Int
+  pessoa      Pessoa    @relation(fields: [pessoaId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Habilidade {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  nivel     String?
+  pessoaId  Int
+  pessoa    Pessoa   @relation(fields: [pessoaId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([pessoaId, nome])
 }
