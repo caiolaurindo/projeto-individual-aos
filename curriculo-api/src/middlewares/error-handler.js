@@ -8,7 +8,7 @@ export function errorHandler(error, req, res, next) {
       return res.status(404).json({ erro: "Registro não encontrado." });
     }
     if (error.code === "P2002") {
-      return res.status(409).json({ erro: "Este registro já existe para a pessoa informada." });
+      return res.status(409).json({ erro: "Já existe um registro com os dados únicos informados." });
     }
     if (error.code === "P2003") {
       return res.status(400).json({ erro: "A pessoa informada não existe." });
