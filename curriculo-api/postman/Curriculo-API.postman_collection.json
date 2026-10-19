@@ -1,0 +1,601 @@
+{
+  "info": {
+    "name": "Currículo API - GET, POST e PATCH",
+    "description": "Cada entidade tem somente GET all, GET por ID, POST e PATCH. Execute de cima para baixo: o POST de Pessoa salva pessoaId, usado para criar os registros relacionados; os POSTs salvam os IDs das entidades para os GET por ID e PATCH.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Pessoa",
+      "item": [
+        {
+          "name": "POST - Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/pessoas",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Pessoa de teste Postman\",\n  \"email\": \"postman.{{$guid}}@example.com\",\n  \"telefone\": \"+55 11 90000-0000\",\n  \"resumo\": \"Pessoa criada pela coleção do Postman.\",\n  \"linkedin\": \"https://example.com/perfil-linkedin\",\n  \"github\": \"https://example.com/perfil-github\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "const resposta = pm.response.json();",
+                  "pm.collectionVariables.set(\"pessoaId\", resposta.id);",
+                  "pm.test(\"ID salvo em pessoaId\", function () { pm.expect(resposta.id).to.be.a(\"number\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET all - Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/pessoas"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET id - Buscar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/pessoas/{{pessoaId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PATCH - Atualizar",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/pessoas/{{pessoaId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resumo\": \"Resumo atualizado pelo PATCH do Postman.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Formação",
+      "item": [
+        {
+          "name": "POST - Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/formacoes",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instituicao\": \"Universidade Exemplo\",\n  \"curso\": \"Análise e Desenvolvimento de Sistemas\",\n  \"nivel\": \"Tecnólogo\",\n  \"dataInicio\": \"2024-02-01T00:00:00.000Z\",\n  \"dataFim\": null,\n  \"emAndamento\": true,\n  \"descricao\": \"Formação criada pela coleção do Postman.\",\n  \"pessoaId\": \"{{pessoaId}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "const resposta = pm.response.json();",
+                  "pm.collectionVariables.set(\"formacaoId\", resposta.id);",
+                  "pm.test(\"ID salvo em formacaoId\", function () { pm.expect(resposta.id).to.be.a(\"number\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET all - Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/formacoes?pessoaId={{pessoaId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET id - Buscar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/formacoes/{{formacaoId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PATCH - Atualizar",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/formacoes/{{formacaoId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"descricao\": \"Formação atualizada pelo PATCH do Postman.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Experiência",
+      "item": [
+        {
+          "name": "POST - Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/experiencias",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"empresa\": \"Empresa Exemplo\",\n  \"cargo\": \"Pessoa Desenvolvedora Júnior\",\n  \"tipo\": \"Tempo integral\",\n  \"local\": \"Remoto\",\n  \"dataInicio\": \"2025-01-01T00:00:00.000Z\",\n  \"dataFim\": null,\n  \"emAndamento\": true,\n  \"descricao\": \"Experiência criada pela coleção do Postman.\",\n  \"pessoaId\": \"{{pessoaId}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "const resposta = pm.response.json();",
+                  "pm.collectionVariables.set(\"experienciaId\", resposta.id);",
+                  "pm.test(\"ID salvo em experienciaId\", function () { pm.expect(resposta.id).to.be.a(\"number\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET all - Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/experiencias?pessoaId={{pessoaId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET id - Buscar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/experiencias/{{experienciaId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PATCH - Atualizar",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/experiencias/{{experienciaId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cargo\": \"Pessoa Desenvolvedora Pleno\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Projeto",
+      "item": [
+        {
+          "name": "POST - Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projetos",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Projeto de teste Postman\",\n  \"descricao\": \"Projeto criado pela coleção do Postman.\",\n  \"url\": \"https://example.com/projeto\",\n  \"repositorio\": \"https://example.com/repositorio\",\n  \"tecnologias\": [\n    \"Node.js\",\n    \"Express\",\n    \"PostgreSQL\"\n  ],\n  \"dataInicio\": \"2025-03-01T00:00:00.000Z\",\n  \"dataFim\": null,\n  \"pessoaId\": \"{{pessoaId}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "const resposta = pm.response.json();",
+                  "pm.collectionVariables.set(\"projetoId\", resposta.id);",
+                  "pm.test(\"ID salvo em projetoId\", function () { pm.expect(resposta.id).to.be.a(\"number\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET all - Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/projetos?pessoaId={{pessoaId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET id - Buscar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/projetos/{{projetoId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PATCH - Atualizar",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projetos/{{projetoId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"descricao\": \"Projeto atualizado pelo PATCH do Postman.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Habilidade",
+      "item": [
+        {
+          "name": "POST - Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/habilidades",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"JavaScript\",\n  \"nivel\": \"Intermediário\",\n  \"pessoaId\": \"{{pessoaId}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "const resposta = pm.response.json();",
+                  "pm.collectionVariables.set(\"habilidadeId\", resposta.id);",
+                  "pm.test(\"ID salvo em habilidadeId\", function () { pm.expect(resposta.id).to.be.a(\"number\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET all - Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/habilidades?pessoaId={{pessoaId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET id - Buscar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/habilidades/{{habilidadeId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PATCH - Atualizar",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/habilidades/{{habilidadeId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nivel\": \"Avançado\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "pessoaId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "formacaoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "experienciaId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "projetoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "habilidadeId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
