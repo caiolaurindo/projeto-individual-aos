@@ -232,6 +232,264 @@ const curriculos = [
       { nome: "Python", nivel: "Intermediário" },
     ],
   },
+  {
+    id: 8,
+    pessoa: {
+      nome: "Caio Laurindo",
+      email: "caiolaurindodev@gmail.com",
+      telefone: "+55 81 98403-6075",
+      resumo: "Desenvolvedor Full Stack com experiência em aplicações web e produtos digitais, atuando na PERPART no desenvolvimento do Hub de Inovação, com foco em front-end e contribuições back-end. Experiência com metodologias ágeis, testes automatizados e boas práticas de qualidade de código. Também atuou como Instrutor de Programação Full Stack com IA e participou da Residência Tecnológica do Porto Digital.",
+      linkedin: null,
+      github: null,
+    },
+    formacoes: [
+      {
+        instituicao: "Universidade Católica de Pernambuco (UNICAP)",
+        curso: "Sistemas para Internet",
+        nivel: "Tecnólogo",
+        dataInicio: data("2025-02-01"),
+        dataFim: null,
+        emAndamento: true,
+        descricao: "Graduação em Sistemas para Internet. Atualmente no 4º período.",
+      },
+      {
+        instituicao: "Infinity School",
+        curso: "Programação Full Stack com IA",
+        nivel: "Curso profissionalizante",
+        dataInicio: data("2024-05-01"),
+        dataFim: data("2025-07-31"),
+        emAndamento: false,
+        descricao: "Curso de Programação Full Stack com Inteligência Artificial, com carga horária de 300 horas.",
+      },
+    ],
+    experiencias: [
+      {
+        empresa: "PERPART — Governo de Pernambuco",
+        cargo: "Estagiário de Desenvolvimento Full Stack",
+        tipo: "Estágio",
+        local: "Recife, PE",
+        dataInicio: data("2026-06-01"),
+        dataFim: null,
+        emAndamento: true,
+        descricao: "Desenvolvimento do Hub de Inovação para gestão de produtos digitais, organizações, setores e informações de colaboradores. Atuação com Next.js, React, TypeScript, Tailwind CSS, Node.js e NestJS. Desenvolvimento e integração de APIs REST. Criação e manutenção de testes automatizados com Vitest e Jest, mantendo cobertura superior a 90%. Uso de SonarQube, GitLab e Jira seguindo metodologia ágil Scrum.",
+      },
+      {
+        empresa: "Infinity School",
+        cargo: "Instrutor de Programação Full Stack com IA",
+        tipo: "Instrutoria",
+        local: "Recife, PE",
+        dataInicio: data("2025-12-01"),
+        dataFim: data("2026-08-31"),
+        emAndamento: false,
+        descricao: "Ministração de mais de 190 aulas de programação Full Stack com foco em projetos práticos. Alcance de mais de 96% de aprovação dos alunos. Criação de materiais de estudo e workshops para módulos avançados de Banco de Dados, GitHub e Inteligência Artificial. Orientação de alunos na implementação de projetos e resolução de problemas técnicos.",
+      },
+      {
+        empresa: "Porto Digital",
+        cargo: "Monitor de Laboratório de Inovação",
+        tipo: "Monitoria",
+        local: "Recife, PE",
+        dataInicio: data("2026-02-01"),
+        dataFim: data("2026-08-31"),
+        emAndamento: false,
+        descricao: "Suporte técnico à infraestrutura, aos computadores e aos estudantes do laboratório de inovação, garantindo o funcionamento contínuo do espaço. Apoio na organização e execução de eventos, workshops e atividades do ecossistema de inovação.",
+      },
+    ],
+    projetos: [
+      {
+        nome: "Filme da Vez",
+        descricao: "Plataforma de recomendação de filmes com Inteligência Artificial, analisando preferências e interações dos usuários para oferecer sugestões personalizadas. Arquitetura Full Stack em MVC, autenticação, APIs REST próprias e integração com APIs externas. Inclui funcionalidades para curtir e marcar filmes como assistidos, histórico de interações, testes automatizados e deploy via Vercel e Railway.",
+        url: null,
+        repositorio: null,
+        tecnologias: [
+          "JavaScript",
+          "React",
+          "Node.js",
+          "APIs REST",
+          "Inteligência Artificial",
+          "MVC",
+          "Vercel",
+          "Railway",
+        ],
+        dataInicio: null,
+        dataFim: null,
+      },
+      {
+        nome: "Sinaliza",
+        descricao: "Plataforma de tradução de vídeos para LIBRAS por meio de avatar 3D, desenvolvida no projeto da Residência Tecnológica Porto Digital em parceria com a Globo. Inclui processamento de arquivos SRT, sincronização entre legendas e animações, validação de vocabulário, sugestão de sinônimos, integração com VLibras e testes de validação da solução.",
+        url: null,
+        repositorio: null,
+        tecnologias: [
+          "Python",
+          "Inteligência Artificial",
+          "VLibras",
+          "Processamento de arquivos SRT",
+          "Testes de validação",
+        ],
+        dataInicio: null,
+        dataFim: null,
+      },
+      {
+        nome: "Lotus",
+        descricao: "Plataforma de apoio a mulheres com endometriose, desenvolvida na Residência Tecnológica Porto Digital em parceria com a Beyond Co. Permite acompanhamento de ciclo, sintomas e medicações, com geração de relatórios personalizados. Participação em pesquisa, definição do problema e prototipação em equipe multidisciplinar.",
+        url: null,
+        repositorio: null,
+        tecnologias: [
+          "Pesquisa de produto",
+          "Prototipação",
+          "Design de soluções digitais",
+        ],
+        dataInicio: null,
+        dataFim: null,
+      },
+    ],
+    habilidades: [
+      {
+        nome: "JavaScript",
+        nivel: "Intermediário",
+      },
+      {
+        nome: "HTML",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "CSS",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "TypeScript",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "React",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Next.js",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Node.js",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "NestJS",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Python",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Java",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "SQL",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Flask",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Django",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "APIs REST",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "PostgreSQL",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "MySQL",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Prisma ORM",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "SQLAlchemy",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Tailwind CSS",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Mobile First",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Figma",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "UI/UX",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Jest",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Vitest",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "TDD",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "SonarQube",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "MVC",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Clean Architecture",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "SOLID",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Domain-Driven Design (DDD)",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Docker",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Git",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "GitLab",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Jira",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Vercel",
+        nivel: "Não especificado no currículo",
+      },
+      {
+        nome: "Railway",
+        nivel: "Não especificado no currículo",
+      },
+    ],
+  }
+
 ];
 
 async function salvarCurriculo(tx, curriculo) {
@@ -240,6 +498,10 @@ async function salvarCurriculo(tx, curriculo) {
     create: curriculo.pessoa,
     update: curriculo.pessoa,
   });
+
+  if (curriculo.id && pessoa.id !== curriculo.id) {
+    throw new Error("ID inesperado para " + pessoa.email + ": esperado " + curriculo.id + ", recebido " + pessoa.id);
+  }
 
   for (const formacao of curriculo.formacoes) {
     await salvarFormacao(tx, pessoa.id, formacao);
